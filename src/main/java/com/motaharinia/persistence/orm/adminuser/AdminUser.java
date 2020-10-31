@@ -1,8 +1,8 @@
 package com.motaharinia.persistence.orm.adminuser;
 
 
-import com.motaharinia.msutility.entity.GenericEntity;
-import com.motaharinia.msutility.entity.OracleUtility;
+import com.motaharinia.msjpautility.entity.GenericEntity;
+import com.motaharinia.msjpautility.entity.OracleUtility;
 import com.motaharinia.persistence.orm.adminusercontact.AdminUserContact;
 import com.motaharinia.persistence.orm.adminuserskill.AdminUserSkill;
 import com.motaharinia.persistence.orm.etcitem.EtcItem;

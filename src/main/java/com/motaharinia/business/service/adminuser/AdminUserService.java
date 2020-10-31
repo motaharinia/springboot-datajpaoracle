@@ -1,8 +1,8 @@
 package com.motaharinia.business.service.adminuser;
 
 import com.motaharinia.msutility.customexception.UtilityException;
-import com.motaharinia.msutility.search.data.SearchDataModel;
-import com.motaharinia.msutility.search.filter.SearchFilterModel;
+import com.motaharinia.msjpautility.search.data.SearchDataModel;
+import com.motaharinia.msjpautility.search.filter.SearchFilterModel;
 import com.motaharinia.presentation.adminuser.AdminUserModel;
 import org.jetbrains.annotations.NotNull;
 

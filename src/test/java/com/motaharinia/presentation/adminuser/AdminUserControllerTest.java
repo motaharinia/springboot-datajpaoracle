@@ -7,8 +7,8 @@ import com.motaharinia.msutility.customexception.BusinessException;
 import com.motaharinia.msutility.customexception.UtilityException;
 import com.motaharinia.msutility.customfield.CustomDate;
 import com.motaharinia.msutility.json.CustomObjectMapper;
-import com.motaharinia.msutility.search.data.SearchDataModel;
-import com.motaharinia.msutility.search.filter.*;
+import com.motaharinia.msjpautility.search.data.SearchDataModel;
+import com.motaharinia.msjpautility.search.filter.*;
 import com.motaharinia.msutility.string.RandomGenerationTypeEnum;
 import com.motaharinia.msutility.string.StringTools;
 import com.motaharinia.presentation.adminuserskill.AdminUserSkillModel;
@@ -68,7 +68,7 @@ public class AdminUserControllerTest {
      */
     @BeforeEach
     void initUseCase() throws InvocationTargetException, UtilityException, IllegalAccessException, BusinessException {
-        Locale.setDefault(new Locale("fa"));
+        Locale.setDefault(new Locale("fa", "IR"));
         etcItemInitialData.checkEtcItems();
     }
 

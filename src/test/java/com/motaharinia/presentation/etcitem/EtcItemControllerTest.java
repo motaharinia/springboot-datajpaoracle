@@ -52,7 +52,7 @@ public class EtcItemControllerTest {
      */
     @BeforeEach
     void initUseCase() throws InvocationTargetException, UtilityException, IllegalAccessException, BusinessException {
-        Locale.setDefault(new Locale("fa"));
+        Locale.setDefault(new Locale("fa", "IR"));
         etcItemInitialData.checkEtcItems();
     }
 

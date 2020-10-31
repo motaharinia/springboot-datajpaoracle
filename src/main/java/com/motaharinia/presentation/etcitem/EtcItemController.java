@@ -2,21 +2,14 @@ package com.motaharinia.presentation.etcitem;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.motaharinia.business.service.etcitem.EtcItemService;
-import com.motaharinia.msutility.customexception.BusinessException;
-import com.motaharinia.msutility.customexception.UtilityException;
 import com.motaharinia.msutility.genericmodel.CustomComboModel;
 import com.motaharinia.msutility.json.CustomObjectMapper;
-import com.motaharinia.msutility.jstree.JstreeNodeModel;
-import com.motaharinia.msutility.search.filter.SearchFilterModel;
-import com.motaharinia.presentation.adminuserorganizationunit.AdminUserOrganizationUnitModel;
 import com.motaharinia.presentation.generic.CustomComboFilterModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
+
 import java.util.Optional;
 
 /**

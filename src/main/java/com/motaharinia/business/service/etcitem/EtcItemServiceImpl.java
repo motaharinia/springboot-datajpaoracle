@@ -4,7 +4,7 @@ package com.motaharinia.business.service.etcitem;
 import com.motaharinia.msutility.customexception.BusinessException;
 import com.motaharinia.msutility.customexception.UtilityException;
 import com.motaharinia.msutility.customexception.UtilityExceptionKeyEnum;
-import com.motaharinia.msutility.entity.EntityTools;
+import com.motaharinia.msjpautility.entity.EntityTools;
 import com.motaharinia.msutility.genericmodel.CustomComboDataRowModel;
 import com.motaharinia.msutility.genericmodel.CustomComboModel;
 import com.motaharinia.persistence.orm.etcitem.EtcItem;

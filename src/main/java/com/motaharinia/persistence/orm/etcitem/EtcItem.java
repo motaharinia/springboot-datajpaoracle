@@ -1,7 +1,7 @@
 package com.motaharinia.persistence.orm.etcitem;
 
 
-import com.motaharinia.msutility.entity.GenericEntity;
+import com.motaharinia.msjpautility.entity.GenericEntity;
 import org.hibernate.search.annotations.Field;
 
 import javax.persistence.*;

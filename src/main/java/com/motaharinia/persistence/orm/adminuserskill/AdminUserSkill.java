@@ -1,7 +1,7 @@
 package com.motaharinia.persistence.orm.adminuserskill;
 
 
-import com.motaharinia.msutility.entity.GenericEntity;
+import com.motaharinia.msjpautility.entity.GenericEntity;
 import com.motaharinia.persistence.orm.adminuser.AdminUser;
 
 import javax.persistence.*;

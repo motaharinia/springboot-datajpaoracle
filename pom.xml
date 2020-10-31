@@ -43,6 +43,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.4</version>
+        </dependency>
 
         <!--==========Data JPA & Indexing==========-->
         <!-- https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Release-Notes-->
@@ -149,7 +154,7 @@
         <!--MsUtility-->
         <dependency>
             <groupId>com.motaharinia</groupId>
-            <artifactId>MsUtility</artifactId>
+            <artifactId>MsJpaUtility</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
