@@ -152,6 +152,18 @@ public class AdminUserServiceImpl implements AdminUserService {
     }
 
     /**
+     * متد جستجوی با کلمه کاربری برای تست مبدل اطلاعات بانک
+     *
+     * @param username کلمه کاربری
+     * @return خروجی: مدل حاوی جنسیت تغییر داده شده مطابق با شرایط بانک
+     */
+    @Override
+    public AdminUserModel readBriefByUsername(@NotNull String username) {
+        AdminUserSearchViewTypeBrief adminUserSearchViewTypeBrief= adminUserRepository.findByUsernameLike(username);
+        return new AdminUserModel(adminUserSearchViewTypeBrief);
+    }
+
+    /**
      * متد جستجو با مدل فیلتر جستجو
      *
      * @param searchFilterModel        مدل فیلتر جستجو
@@ -218,10 +230,11 @@ public class AdminUserServiceImpl implements AdminUserService {
         adminUserContactRepository.deleteById(adminUser.getDefaultAdminUserContact().getId());
         //حذف مهارتهای ادمین
         adminUser = adminUserSkillService.deleteByAdminUser(adminUser);
-        adminUserRepository.save(adminUser);
         adminUserRepository.delete(adminUser);
         return adminUserModel;
     }
+
+
 
     @NotNull
     private AdminUserModel convertToDto(@NotNull AdminUser adminUser) {

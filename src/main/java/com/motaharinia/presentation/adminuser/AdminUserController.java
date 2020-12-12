@@ -58,11 +58,22 @@ public class AdminUserController {
     }
 
     /**
+     * متد جستجوی با کلمه کاربری برای تست مبدل اطلاعات بانک
+     *
+     * @param username کلمه کاربری
+     * @return خروجی: مدل حاوی جنسیت تغییر داده شده مطابق با شرایط بانک
+     */
+    @GetMapping("/adminUser/readBriefByUsername/{username}")
+    public AdminUserModel readBriefByUsername(@PathVariable String username) {
+        return adminUserService.readBriefByUsername(username);
+    }
+
+    /**
      * متد جستجو با مدل فیلتر جستجو
      *
      * @param searchFilterModelJson رشته جیسون مدل فیلتر جستجو
-     * @param searchViewTypeEnum     نوع نمایش خروجی که ستونهای(فیلدهای) خروجی داخل آن تعریف شده است
-     * @param searchValueList     لیست مقادیر مورد نیاز جهت جستجو
+     * @param searchViewTypeEnum    نوع نمایش خروجی که ستونهای(فیلدهای) خروجی داخل آن تعریف شده است
+     * @param searchValueList       لیست مقادیر مورد نیاز جهت جستجو
      * @return خروجی: مدل داده جستجو
      * @throws UtilityException
      */
@@ -78,6 +89,7 @@ public class AdminUserController {
         SearchDataModel searchDataModel = adminUserService.readGrid(searchFilterModel, searchViewTypeInterface, searchValueList);
         return searchDataModel;
     }
+
 
     /**
      * متد ویرایش

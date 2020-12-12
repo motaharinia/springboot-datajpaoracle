@@ -2,6 +2,7 @@ package com.motaharinia.presentation.adminuser;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.motaharinia.business.service.adminuser.AdminUserSearchViewTypeBrief;
 import com.motaharinia.business.service.adminuser.AdminUserSearchViewTypeEnum;
 import com.motaharinia.msutility.customexception.BusinessException;
 import com.motaharinia.msutility.customexception.UtilityException;
@@ -58,7 +59,8 @@ public class AdminUserControllerTest {
     /**
      * شیی crud
      */
-    private static Integer crudId =23;
+    private static Integer crudId = 23;
+    private static String crudUsername = "eng.motahari@gmail.com";
     private static String random;
 
     private CustomObjectMapper customObjectMapper = new CustomObjectMapper();
@@ -80,10 +82,7 @@ public class AdminUserControllerTest {
             String uri = "http://localhost:" + port + "/adminUser";
 
             random = StringTools.generateRandomString(RandomGenerationTypeEnum.CHARACTER_ALL, 5, false);
-            CustomDate dateOfBirth = new CustomDate();
-            dateOfBirth.setYear(1399);
-            dateOfBirth.setMonth(4);
-            dateOfBirth.setDay(3);
+            CustomDate dateOfBirth = new CustomDate(1399, 4, 3);
 
             AdminUserModel adminUserModel = new AdminUserModel();
             adminUserModel.setFirstName("Mostafa " + random);
@@ -107,6 +106,7 @@ public class AdminUserControllerTest {
             adminUserModel = response.getBody();
             assertThat(adminUserModel.getGender_id()).isEqualTo(1);
             crudId = adminUserModel.getId();
+            crudUsername = adminUserModel.getUsername();
         } catch (Exception ex) {
             fail(ex.toString());
         }
@@ -136,6 +136,28 @@ public class AdminUserControllerTest {
 
     @Test
     @Order(3)
+    public void readBriefByUsername() {
+        try {
+            String uri = "http://localhost:" + port + "/adminUser/readBriefByUsername/"+crudUsername;
+
+            // build the request
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+            HttpEntity entity = new HttpEntity(headers);
+            ResponseEntity<AdminUserModel> response = this.restTemplate.exchange(uri, HttpMethod.GET, entity, AdminUserModel.class);
+            assertThat(response).isNotEqualTo(null);
+            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+            assertThat(response.getBody()).isNotEqualTo(null);
+            AdminUserModel adminUserModel = response.getBody();
+            assertThat(adminUserModel.getGender_id()).isEqualTo(11);
+        } catch (Exception ex) {
+            fail(ex.toString());
+        }
+    }
+
+    @Test
+    @Order(4)
     public void readGrid() throws JsonProcessingException {
         System.out.println("LocaleContextHolder.getLocale()" + LocaleContextHolder.getLocale());
         try {
@@ -144,15 +166,9 @@ public class AdminUserControllerTest {
             if (ObjectUtils.isEmpty(random)) {
                 random = "skill";
             }
-            CustomDate dateOfBirthFrom = new CustomDate();
-            dateOfBirthFrom.setYear(1399);
-            dateOfBirthFrom.setMonth(4);
-            dateOfBirthFrom.setDay(3);
+            CustomDate dateOfBirthFrom = new CustomDate(1399, 4, 3);
 
-            CustomDate dateOfBirthTo = new CustomDate();
-            dateOfBirthTo.setYear(1399);
-            dateOfBirthTo.setMonth(4);
-            dateOfBirthTo.setDay(6);
+            CustomDate dateOfBirthTo = new CustomDate(1399, 4, 6);
 
 
             List<String> usernameList = new ArrayList<>();
@@ -200,7 +216,7 @@ public class AdminUserControllerTest {
 
 
     @Test
-    @Order(4)
+    @Order(5)
     public void update() throws Exception {
         try {
             String uri = "http://localhost:" + port + "/adminUser";
@@ -218,10 +234,7 @@ public class AdminUserControllerTest {
             assertThat(adminUserModel.getId()).isEqualTo(crudId);
 
             random = StringTools.generateRandomString(RandomGenerationTypeEnum.CHARACTER_ALL, 5, false);
-            CustomDate dateOfBirth = new CustomDate();
-            dateOfBirth.setYear(1399);
-            dateOfBirth.setMonth(12);
-            dateOfBirth.setDay(22);
+            CustomDate dateOfBirth = new CustomDate(1399, 12, 22);
 
             //ویرایش اطلاعات مدل
             adminUserModel.setFirstName(adminUserModel.getFirstName() + "Updated");
@@ -250,7 +263,7 @@ public class AdminUserControllerTest {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     public void delete() throws Exception {
         try {
             String uri = "http://localhost:" + port + "/adminUser/" + crudId;

@@ -1,5 +1,6 @@
 package com.motaharinia.presentation.adminuser;
 
+import com.motaharinia.business.service.adminuser.AdminUserSearchViewTypeBrief;
 import com.motaharinia.msutility.customfield.CustomDate;
 import com.motaharinia.msutility.customvalidation.required.Required;
 import com.motaharinia.presentation.adminuserskill.AdminUserSkillModel;
@@ -47,7 +48,6 @@ public class AdminUserModel implements Serializable {
      */
     private CustomDate dateOfBirth;
 
-
     /**
      * جنسیت
      */
@@ -64,6 +64,17 @@ public class AdminUserModel implements Serializable {
      */
     private List<AdminUserSkillModel> skillList = new ArrayList<>();
 
+    public AdminUserModel() {
+    }
+
+    public AdminUserModel(AdminUserSearchViewTypeBrief adminUserSearchViewTypeBrief) {
+        this.id = adminUserSearchViewTypeBrief.getId();
+        this.firstName = adminUserSearchViewTypeBrief.getFirstName();
+        this.lastName = adminUserSearchViewTypeBrief.getLastName();
+        this.dateOfBirth = new CustomDate(adminUserSearchViewTypeBrief.getDateOfBirth()) ;
+        this.gender_id =adminUserSearchViewTypeBrief.getGender().getId() ;
+        this.defaultAdminUserContact_address =adminUserSearchViewTypeBrief.getDefaultAdminUserContact().getAddress() ;
+    }
 
     @Override
     public String toString() {
@@ -74,6 +85,7 @@ public class AdminUserModel implements Serializable {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", gender_id='" + gender_id + '\'' +
                 ", defaultAdminUserContact_address='" + defaultAdminUserContact_address + '\'' +
                 ", skillList=[" + skillList.stream().map(item -> item.toString()).collect(Collectors.joining(",")) + "]" +
                 '}';

@@ -36,16 +36,25 @@ public interface AdminUserService {
     AdminUserModel readById(@NotNull Integer id) throws UtilityException;
 
     /**
+     * متد جستجوی با کلمه کاربری برای تست مبدل اطلاعات بانک
+     *
+     * @param username کلمه کاربری
+     * @return خروجی: مدل حاوی جنسیت تغییر داده شده مطابق با شرایط بانک
+     */
+    AdminUserModel readBriefByUsername(@NotNull String username);
+
+    /**
      * متد جستجو با مدل فیلتر جستجو
      *
-     * @param searchFilterModel        مدل فیلتر جستجو
-     * @param searchViewTypeInterface        کلاس اینترفیس نوع نمایش خروجی که ستونهای(فیلدهای) خروجی داخل آن تعریف شده است
-     * @param searchValueList لیست مقادیر مورد نیاز جهت جستجو
+     * @param searchFilterModel       مدل فیلتر جستجو
+     * @param searchViewTypeInterface کلاس اینترفیس نوع نمایش خروجی که ستونهای(فیلدهای) خروجی داخل آن تعریف شده است
+     * @param searchValueList         لیست مقادیر مورد نیاز جهت جستجو
      * @return خروجی: مدل داده جستجو
      * @throws UtilityException
      */
     @NotNull
     SearchDataModel readGrid(@NotNull SearchFilterModel searchFilterModel, @NotNull Class searchViewTypeInterface, @NotNull List<Object> searchValueList) throws UtilityException;
+
 
     /**
      * متد ویرایش
@@ -64,5 +73,6 @@ public interface AdminUserService {
      */
     @NotNull
     AdminUserModel delete(@NotNull Integer id) throws UtilityException;
+
 
 }
