@@ -1,8 +1,9 @@
 package com.motaharinia.presentation.home;
 
 
+import io.leangen.graphql.annotations.GraphQLQuery;
+import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
  *  کلاس کنترلر خانه
  */
 @RestController
+@GraphQLApi
 public class HomeController {
 
 
     @GetMapping("/")
+    @GraphQLQuery
     public String home() {
         return "Hello Homepage!, Spring boot 2 (The default database pooling technology in Spring Boot 2.0 has been switched from Tomcat Pool to HikariCP) data jpa with oracle";
     }
